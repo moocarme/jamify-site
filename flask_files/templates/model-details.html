@@ -293,8 +293,8 @@
         </div>
         <div class = "container" id='mostGeneral'>
             <h2>The Most General Song</h2><br>
-            <p>As an </i>.interesting thought experiment I decided to fit the huge matrix of songs and users by decomposing using SVD with a rank of 1. This will essentially give me the most general song, that minimizes cosine similiarity with all other songs.</p>
-            <p>The result is the same song recommendation to all users, which was Marvin Sease' <i>Show me what you got</i>.</p>
+            <p>As an interesting thought experiment I decided to fit the huge matrix of songs and users by decomposing using SVD with a rank of 1. This will essentially give me the most general song that minimizes cosine similiarity with all other songs.</p>
+            <p>The result is the same song recommendation to all users, which was Marvin Sease's <i>Show me what you got</i>.</p>
             <br>
                <center><img src="../static/img/marv.png" width="30%"></center>
             <br>
@@ -303,7 +303,7 @@
         <div class = "container" id='compar'>
             <h2>User-User versus Item-Item Similarity </h2>
             <br>
-            <p>Next I wanted to compare using item-item similarity with user-user similarity. User-user similarity works byfinding similar users and recommending songs based on songs in their listening history.</p>
+            <p>Next I wanted to compare using item-item similarity with user-user similarity. User-user similarity works by finding similar users and recommending songs based on songs in their listening history.</p>
             <div class = 'row'>
                 <div class = 'col-sm-6'>
                     <center><img src="../static/img/songSim.png" style = "background-color:white; border:15px solid white;width:100%;border-radius: 25px;" ></center><br><br>
@@ -323,13 +323,13 @@
             <p>Rating the difficulty composed of coming up with features that I determined to be difficult for each instrument, and constructing those features with the messy and inconsistent data from scraping <a href="http://ultimate-guitar.com">ultimate-guitar.com</a>. For the music notation consisting of chords, which were tablature types labelled <i>chords</i> and <i>ukulele chords</i>, the chords themselves became natural and intuitive features, and because there are over 400 chords that appear in more than 100 unique songs, they make good features.</p>
             <p>As some exploratory data analysis I looked at the count distribution of various chords observed in the dataset, where the different colors represent the various chord families and their size is their count frequency. We see that the major and minor chords are largest since they appear more often and the more obscure chords appear less often.</p>
             <center><iframe src="http://www.mattmoocar.me/ukulele-chord-count-plot/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe></center><br>
-            <p>We can also see how guitar chords preogress within songs. Below is a plot of what chords follow each other with songs.</p>
+            <p>We can also see how guitar chords progress within songs. Below is a plot of what chords follow each other with songs.</p>
             <center><iframe src="http://www.mattmoocar.me/chord-plot/guitar/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe></center><br>
-            <p>From this plot we can idetify popular chord progrssions including the most popular chord progression in western music history - D-A-Bm-G, which appears in a range of songs from Journey's <i>Don't Stop Believin'</i> to MGMT's <i>Kids</i> to A-Ha's <i>Take on Me</i>.</p>
+            <p>From this plot we can identify popular chord progressions including the most popular chord progression in western music history - D-A-Bm-G, which appears in a range of songs from Journey's <i>Don't Stop Believin'</i> to MGMT's <i>Kids</i> to A-Ha's <i>Take on Me</i>.</p>
         </div>
         <div class = 'container' id='feats'>
             <h2>Guitar, Bass, & Drum Tabs</h2>
-            <p>Tablature notation was a little different due to the inconsistent nature of the user submission of tabs, though there was some general standard format with which to compose tablature, each user generally varied their submission with their own unique style. This made it challenging <i class="em em-sweat"></i>. </p>
+            <p>Tablature notation was harder to generate features, in part because of the inconsistent nature of the user submission of tabs. Though there was some general standard format with which to compose tablature, each user generally varied their submission with their own unique style. This made it challenging <i class="em em-sweat"></i><i class = "em em-sweat"></i><i class ="em em-sweat"></i> </p>
             <p>The features for the instruments I used were:</p>
             <br>
                 <table class="table table-hover" style = "width:100%; font-size:160%; font-align:center;">
@@ -348,7 +348,7 @@
                 </table>
         </div>
         <div class = 'container' id='instr'>
-            <p>I trained the model using 10-fold cross-validdated logistic regression with an l2 regularization parameter. I compared l1 and l2 regualarization parameters and l2 out-performed l1, (accuracies will be shown later). I wanted to use logistic regression due to the interpretability of the model. The model accuracies for the various instruments were:</p>
+            <p>I trained the model using 10-fold cross-validdated logistic regression with an l2 regularization parameter. I compared l1 and l2 regularization parameters and l2 out-performed l1, (accuracies will be shown <a href="#otherMod">later</a>). I wanted to use logistic regression due to the interpretability of the coefficients, as they could be later used for development of the product. The model accuracies for the various instruments were:</p>
             <center><table class="table table-hover" style="width:50%; font-size:160%;">
                <tr style="color:#f2ca27;"><th>Instrument</th><th>Accuracy</th></tr>
                <tr><td>Guitar Chords</td><td>76.9%</td></tr>
@@ -366,11 +366,11 @@
                     <center><img src="../static/img/guitarROC.png" style = "width:100%;border-radius: 25px;" ></center><br><br>
                 </div>
             </div><br>
-            <p>The low resolution for the advanced curves is due to the lack of <i>advanced</i> classified observations in the training and test set. </p>
+            <p>The low resolution for the advanced curves is due to the lack of <i>advanced</i> classified observations in the training and test set. The low accuracy obtained for the drums was due to the small number of observations (160 total), so there wasn't much to test and train on, which means that not many features could be used for the model to generalize well. </p>
         </div>
         <div class="container" id = 'otherMod'>
             <h2>Other Models</h2>
-            <p>The training data was fitted using a variety of other models, and the resulting accuracies of the accuracy on the validation sets and test sets are shown below. The models were fitted on 20,000 guitar tabs <i class="em em-guitar"></i><i class="em em-guitar"></i><i class="em em-guitar"></i></p>
+            <p>The training data was fitted using a variety of other models, and the resulting accuracies of the accuracy on the validation sets and test sets are shown below, where rows highlighted are the subject of further study later on. The models were fitted on 20,000 guitar tabs <i class="em em-guitar"></i><i class="em em-guitar"></i><i class="em em-guitar"></i></p>
            
             <br>
                 <table class="table table-hover" style = "width:100%; font-size:160%; font-align:center;">
@@ -389,7 +389,7 @@
         </div>
         
         <div class = "container" id = 'ROC'>
-            <p>We can also plot the learning curves and the ROC curves of the model used, logistic regression with l2 penalty, and adaboost.</p>
+            <p>We can also plot the learning curves and the ROC curves of the model used, logistic regression with l2 penalty- the model chosen, and adaboost- the best performing model.</p>
             <div class = 'row'>
                 <div class = 'col-sm-6'>
                     <h2 style = 'text-align:center'>Logistic Regression</h2><br>
@@ -408,7 +408,7 @@
                     <center><img src="../static/img/AdaROC.png" style = "width:100%;border-radius: 25px;" ></center><br>
                 </div>
             </div>
-            <p>We can see that the accuracy levels once the sample size reaches around 13,000. Also the models have a hard time predicting <i>intermediate</i> class music notation. However this can be overcome, by predicting the <i>novice</i> and <i>advanced</i> categories well, and the remaining will be determined<i>intermediate</i>. </p>
+            <p>We can see that the accuracy levels once the sample size reaches around 13,000. Also the models have a hard time predicting <i>intermediate</i> class music notation. However this can be overcome, by predicting the <i>novice</i> and <i>advanced</i> categories well, and the remaining will be determined <i>intermediate</i>. </p>
         </div>
         <div class='container' id='coefs'>
             <h2>Interpretation of Coefficients</h2>
@@ -448,12 +448,12 @@
                 </div>
                 
             <br>
-            <p>We can see that the model performs along the lines of inituition. Chords that appear easy to play, i.e., the C chord, make the song easy to play.</p>
+            <p>We can see that the model performs along the lines of inituition. Chords that appear easy to play, i.e., the C chord, make the song easy to play. The C chord has needs only one finger and is generally condidered a very easy chord to play on the ukulele in standard tuning. Alternatively, a chord with a high negative coefficient is Abm7, which is quite a difficult chord to play and its presence is highly influential in preventing a song from being easy to play.</p>
         </div>
 
         <div class = 'container' id='conclusion'>
             <h2>Conclusion</h2>
-            <p>To conclude <a href="http://www.jamify.rocks">Jamify</a> is a song recommender that uses SVD of rank 50 to recommend songs based on song-song similarity of songs by bands inputted by the user. This algorithm is used as a trade-off bewteen speed and performance in the recommendation engine. From the algorithms explored if I had the time to input into he database I would use implicit factorization as it performed the best in the test set, with the largest MAP@100 score.</p>
+            <p>To conclude <a href="http://www.jamify.rocks">Jamify</a> is a song recommender that uses SVD of rank 50 to recommend songs based on song-song similarity of songs by bands inputted by the user. This algorithm is used as a trade-off bewteen speed and performance in the recommendation engine. From the algorithms explored if I had the time to input into the database I would use implicit factorization as it performed the best in the test set, with the largest MAP@100 score.</p>
             <p>Logistic regression is used to calculate the difficulty of the unlabelled music notation, and was used because of its interpretability. For those interested in understanding how this model can be applied to other songs, they can easily see which chords or techniques make songs easy or difficult to play. If I were just concerned with accuracy I would use the Adaboost classifier due to its high performance of all classifiers used. However it should be noted that the difficulty levels of those labelled may not be ground truth because it is just a single users determination of the song difficulty level. Due to this, aiming for perfect fit may not be the best use of time.</p>
             <p>Overall this project was extremely fun to implement, if you have any questions or comments you can forward through my available streams below. And don't forget to ROCK ON <i class="em em-metal"></i><i class="em em-metal"></i><i class="em em-metal"></i></p>
         </div>
