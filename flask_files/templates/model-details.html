@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jamify - Learn to Play your New Favorite Songs</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|New+Rocker|Open+Sans|Metal+Mania|Exo" rel="stylesheet"> 
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../static/device-mockups/device-mockups.min.css">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link href="../static/css/new-age.css" rel="stylesheet">
+
+    <link rel="favicon-144-precomposed"  href="../img/guitar.svg">
+    <link rel="shortcut icon" href="../img/guitar.svg">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+	html, body {
+    		max-width: 100%;
+    		overflow-x: hidden;
+	}
+        h1 {
+          font-family: 'Metal Mania', cursive;
+          color: #f2ca27;
+        }
+        h2 {
+          color: #f2ca27;
+        }
+        p{
+            font-size: 200%;
+        }
+        li{
+            font-size: 115%
+        }
+        div.container{
+            padding-right: 250px;
+        }
+        #wrapper {
+          padding-left: 250px;
+          transition: all 0.4s ease 0s;
+        }
+
+        #sidebar-wrapper {
+          margin-left: -250px;
+          left: 250px;
+          width: 250px;
+          background: #000;
+          position: fixed;
+          height: 100%;
+          overflow-y: auto;
+          z-index: 1000;
+          transition: all 0.4s ease 0s;
+        }
+
+        #page-content-wrapper {
+          width: 100%;
+        }
+
+        .sidebar-nav {
+          position: absolute;
+          top: 0;
+          width: 250px;
+          list-style: none;
+          margin: 0;
+          padding: 10% 10% 10% 10%;
+        }
+
+        .a1 {
+          color: #696969;
+        }
+        .a2 {
+          color: #696969;
+        }
+        .a3 {
+          color: #696969;
+        }
+        .a4 {
+          color: #696969;
+        }
+        .a5 {
+          color: #696969;
+        }
+        .a6 {
+          color: #696969;
+        }
+        .a7 {
+          color: #696969;
+        }
+        .a8 {
+          color: #696969;
+        }
+        .a9 {
+          color: #696969;
+        }
+        .a10 {
+          color: #696969;
+        }
+        .a11 {
+          color: #696969;
+        }
+        .a12 {
+          color: #696969;
+        }
+        .a13 {
+          color: #696969;
+        }
+        .a14 {
+          color: #696969;
+        }
+        .a15 {
+          color: #696969;
+        }
+        
+        @media (max-width:767px) {
+
+            #wrapper {
+              padding-left: 0;
+            }
+
+            #sidebar-wrapper {
+              left: 0;
+            }
+
+            #wrapper.active {
+              position: relative;
+              left: 250px;
+            }
+
+            #wrapper.active #sidebar-wrapper {
+              left: 250px;
+              width: 250px;
+              transition: all 0.4s ease 0s;
+            }
+
+        }
+    </style>
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav>
+    <div id="sidebar-wrapper">
+        <center><h1><a class="navbar-brand page-scroll" style = "font-family: 'Metal Mania', cursive; color: #f2ca27; font-size:150%; text-align:center;" href="http://www.jamify.rocks">Jamify</a></h1></center>
+        <ul class="sidebar-nav"><br><br><br>
+            <li><a href="http://www.mattmoocar.me">Matt Moocarme</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li><br>
+
+            <li><a class="a1" href="#motivation">Motivation</a></li>
+            <li><a class="a2" href="#data">The Data</a></li>
+            <li><a class="a3" href="#approach">Approach</a></li>
+            <li><a class="a4" href="#RecEngine">Music Recommender</a></li>
+            <ul>
+                <li><a href="#SVD"class="a5">SVD</a></li>
+                <li><a href="#implicit" class="a6" >Implicit</a></li>
+                <li><a href="#mostGeneral" class="a7">The Most General Song</a></li>
+                <li><a href="#compar" class="a8">User-user vs Item-item</a></li>
+            </ul>
+            <li><a class="a9" href="#SongDiff">Rating Difficulty Levels of Songs</a></li>
+            <ul>
+                <li><a href="#feats"class="a10">Features</a></li>
+                <li><a href="#instr" class="a11" >Different Instruments</a></li>
+                <li><a href="#otherMod" class="a12">Other Models</a></li>
+                <li><a href="#ROC" class="a13">ROC Curves</a></li>
+                <li><a href="#coefs" class="a14">Coefficients</a></li>
+            </ul>
+            <li><a class="a15" href="#conclusion">Conclusion</a></li>
+
+        </ul>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+	<ul class="list-inline list-social">
+                <li class="social-github" style="margin: 10px 5px 0 20px;">
+                    <a href="https://github.com/moocarme" target = '_blank'><i class="fa fa-github-alt fa-2x"></i></a>
+                </li>
+                <li class="social-linkedin" style="margin: 0 5px 0 0;">
+                    <a href="https://linkedin.com/in/matthew-moocarme" target = '_blank'><i class="fa fa-linkedin fa-2x"></i></a>
+                </li>
+                <li class="social-mail" style="margin: 0 5px 0 0;">
+                    <a href="mailto:moocarme@gmail.com" target = '_blank'><i class="fa fa-envelope-o fa-2x"></i></a>
+                </li>
+                <li class="social-web" style="margin: 0 5px 0 0;">
+                    <a href="http://www.mattmoocar.me" target = '_blank'><i class="fa fa-diamond fa-2x"></i></a>
+                </li>
+            </ul>
+
+    </div>
+</nav>
+    <!--
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" style = "font-family: 'Metal Mania', cursive; color: #f2ca27; font-size:200%" href="/">Jamify</a>
+            </div>
+
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="https://www.mattmoocar.me">Matthew Moocarme</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ url_for('static', filename='model-details/index.html') }}">Model Details</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>-->
+
+    <header>
+        <div class="container" style = 'text-align:center'>
+            <br>
+            <br>
+            <br>
+            <h1 style = "font-size:300%;"><big>Jamify - Model Details</big></h1> 
+            <br>
+            <!--<a href="#recommend" class="btn btn-outline btn-xl page-scroll">Start Now for Free!</a>-->
+        </div>
+        <div class="container" id='motivation'>
+            <h2>Motivation</h2>
+            <p>The goal is to build a recommendation engine specifically for musicians that can provide musical notation to play generated from an input band. The idea behind this project is that learning to play songs is often motivated by listening to artists you really enjoy, however when looking for the music notation for these artists, they can either not exist or the skill level required to play is beyond my level.</p>
+        </div>
+        <div class = 'container' id = 'data'>
+            <h2>The Data</h2>
+            <p>To solve this problem I combine 2 datasets. For the recommendation engine the data of user, song, and listening histories comes from a subset of the <a target='_blank' href="http://labrosa.ee.columbia.edu/millionsong/pages/getting-dataset">Million Song Dataset</a> which itself is over 500Gb, though I use just 2.4Gb, which equates to about 17 million entries. The corresponding metadata comes from the <a target='_blank' target='_blank' href="http://the.echonest.com/">The Echo Nest</a>, that is now taken over by <a target='_blank' href="https://developer.spotify.com/spotify-echo-nest-api/">Spotify</a> earlier in 2016. </p>
+            <p>The data on the music notation comes from scraping over 1 million webpages from <a href="http://www.ultimate-guitar.com">ultimate-guitar.com</a> which includes music notation for the guitar, ukulele, bass guitar, drums and violin. Most look in the following form:</p>
+            <div class= 'row'>
+                <div class = 'col-sm-6'>
+                    <h2 style = 'text-align:center;'>Tabs</h2>
+                    <img src="../static/img/tabs_ex2_cropped.png" width = "100%" style = "border:5px solid white">
+                </div>
+                <div class = 'col-sm-6'>
+                    <h2 style = 'text-align:center;'>Chords</h2>
+                    <img src="../static/img/chords_ex2_cropped.png" width = "100%" style = "border:5px solid white"></div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+            <p>Out of all the music notation scraped the distribution was as follows: </p><br><br>
+            <img src="../static/img/EDA_tabTypes.png" style = "width:100%;border-radius: 25px;" ><br>
+            <hr style="height:10px; visibility:hidden;" />
+            <img src="../static/img/EDA_diffNum.png" style = "width:100%;border-radius: 25px;" ><br><br>
+            <p>Roughly 36% of the music notation is labelled into <i>novice</i>, <i>intermediate</i>, and <i>advanced</i>, so it will be my goal to label the remaining based on some classification model I will build.</p>
+        </div>
+        <div class = 'container' id = 'approach'>
+            <h2>Approach</h2>
+            <p>I've had experience with building recommendation systems <i class="em em-musical_note"></i>before, as can be seen in R <a href="http://www.mattmoocar.me/MusicRec/">here</a>, and using Spark <a href="http://www.mattmoocar.me/blog/Spark-Music-Rec/">here</a><i class="em em-boom"></i>, so the reason for using Python is that I will be eventually incorporating the results into a PostgreSQL database, and then using Flask to serve the reults on a (this) website, so to do eevrything in one language would be nice. Also I would like to have the experience and challenge of building recommendation engines in Python to compare with other languages<i class="em em-snake"></i>.</p>
+            <p>I will use logistic regression to make the classifications because it will be extremely insightful to discover what make songs classified as <i>novice</i> easy to play, and what makes songs classified <i>advanced</i>, hard to play. These results could be used for teaching applications in further studies.</p>
+        </div>
+        <div class = 'container' id='RecEngine'>
+            <h2 id='SVD'>The Recommendation Engine</h2>
+            <p>From the user-song-plays dataset I will create a sparse matrix using SciPy's in-built functions. From this I will use latent semantic analysis to quickly perform cosine similarity using singular value decomposition (SVD). The dataset contains over 200,000 unique users and 300,000 unique songs, so SVD will create 2 matrices with one dimension that is highly reduced. For example if we use SVD and reduce to rank 50, we end up with 2 matrices that are around 200,000 x 50, and 50 x 300,000, their matrix multiplication is approximately equal to the original matrix. The point is that now any cosine similarity we want to perform we do on one of these smaller matrices, and since matrix multiplication has over n<sup>2</sup> order of complexity using the <a href="https://en.wikipedia.org/wiki/Coppersmith%E2%80%93Winograd_algorithm">Coppersmith-Winograd algorith</a>, which is <a href="http://theory.stanford.edu/~virgi/matrixmult-f.pdf">pretty much</a> as good as it gets, any reduction in size is highly beneficial.</p>
+            <p> Jeremy Kun has a great explanation on the subject <a href="https://jeremykun.com/2016/04/18/singular-value-decomposition-part-1-perspectives-on-linear-algebra/">here</a> that I will not try to outdo, for those that want a more in-depth understanding. Implementation in Python was aided by Ben Frederickson's great <a href="http://www.benfrederickson.com/matrix-factorization/">blog post</a>. </p>
+            <center><img src="../static/img/mf3.jpg" style = "width:60%;border-radius: 25px;" ></center><br><br>
+        </div>
+        <div class='container' id ='implicit'>
+            <p>Along with SVD I also wanted to try implicit matrix factorization (MF), that <a href="https://github.com/MrChrisJohnson/implicit-mf">Chris Johnson</a> has <a href="http://yifanhu.net/PUB/cf.pdf">this paper</a>, and credit to <a href="http://blog.ethanrosenthal.com/">Ethan Rosenthal</a> for pointing to me to the implementation<i class="em em-plus1"></i>.</p>
+            <p>I use cosine song-song similarity to detemnine which songs are closest to the songs in the listening history of each user, rank them according to the similarity and recommend the top <i>k</i>-songs.</p>
+            <p>In order to determine that I have not just got a random song generator I validate the model by performing miss-one-out for each user and trying to predict the missing song. I use the mean-average-precision (MAP) for k=100 top-ranked songs (MAP@100) on 10,000 users. For a frame of reference if the MAP@100 is equal to 1, then the algorithm always recommends the correct song at the top of the list, if the MAP@100 is zero then the algorithm never recommends any songs in the list of 100 of the top-ranked songs, that matches the missing song. Alternatively, if the MAP@100 is 0.01 the target missing song is, on average, ranked around 100 on the list of songs suggested for each user.</p>
+            <p>The results comparing SVD of 3 different ranks with ranks, implicit matrix factorization and a random song picker to verify that my algorithms were not simply picking random songs. The reults of MAP@100 are shown below:</p><br><br>
+            <center><img src="../static/img/test1.png" style = "width:60%;border-radius: 25px;"></center>
+            <br><br>
+            <p>The MAP@100 for random song picker was = 1.7424e-6 for 10,000 users, so my algorithms bested the random song picker by 4 orders of magnitude <i class="em em-relieved"></i><i class="em em-relieved"></i><i class="em em-relieved"></i>. It is also worth noting that for every increase in the SVD rank size by factor 2, i.e. 25 &rarr; 50, the time complexity increases by more than a factor of 2 due to all the matrix multiplications, so some trade-off is required.</p>
+        </div>
+        <div class = "container" id='mostGeneral'>
+            <h2>The Most General Song</h2><br>
+            <p>As an </i>.interesting thought experiment I decided to fit the huge matrix of songs and users by decomposing using SVD with a rank of 1. This will essentially give me the most general song, that minimizes cosine similiarity with all other songs.</p>
+            <p>The result is the same song recommendation to all users, which was Marvin Sease' <i>Show me what you got</i>.</p>
+            <br>
+               <center><img src="../static/img/marv.png" width="30%"></center>
+            <br>
+
+        </div>
+        <div class = "container" id='compar'>
+            <h2>User-User versus Item-Item Similarity </h2>
+            <br>
+            <p>Next I wanted to compare using item-item similarity with user-user similarity. User-user similarity works byfinding similar users and recommending songs based on songs in their listening history.</p>
+            <div class = 'row'>
+                <div class = 'col-sm-6'>
+                    <center><img src="../static/img/songSim.png" style = "background-color:white; border:15px solid white;width:100%;border-radius: 25px;" ></center><br><br>
+                </div>
+                <div class = 'col-sm-6'>
+                    <center><img src="../static/img/userSim.png" style = "background-color:white;border:15px solid white;width:100%;border-radius: 25px;" ></center><br><br>
+                </div>
+            </div><br><br>
+            <p>The results I achieved are shown below.</p>
+            <center><img src="../static/img/implicit_mf_comp.png" style = "background-color:white; width:60%;border-radius: 25px;" ></center><br><br>
+            <p>Again for reference the MAP@100 for the random song generator is 1.7424e-6. The songs recommended from item-item similarity were in general better than user-user similarity, since the MAP@100 was between 3 and 4 times higher, which is relieving <i class="em em-relieved"></i> since the user-user similarity takes longer to compute by about a factor of 10. </p>
+            <p>The model I decided with is SVD with rank 50 becuase my ultimate goal is to precompute the song and add them to a database, so that when users are using the website it is fast. To precompute all the similiarites will take a lot of time (around 1.5 - 2 days) with SVD ran 100 or implicit MF, so until I can find a free weekend I will use SVD rank 50, since it can be done overnight.</p>
+        </div>
+        <div class='container' id='SongDiff'>
+            <h2 style ="font-size:300%">Rating Difficulty Levels of Songs</h2>
+            <h2>Guitar & Ukulele Chords <i class="em em-guitar"></i></h2>
+            <p>Rating the difficulty composed of coming up with features that I determined to be difficult for each instrument, and constructing those features with the messy and inconsistent data from scraping <a href="http://ultimate-guitar.com">ultimate-guitar.com</a>. For the music notation consisting of chords, which were tablature types labelled <i>chords</i> and <i>ukulele chords</i>, the chords themselves became natural and intuitive features, and because there are over 400 chords that appear in more than 100 unique songs, they make good features.</p>
+            <p>As some exploratory data analysis I looked at the count distribution of various chords observed in the dataset, where the different colors represent the various chord families and their size is their count frequency. We see that the major and minor chords are largest since they appear more often and the more obscure chords appear less often.</p>
+            <center><iframe src="http://www.mattmoocar.me/ukulele-chord-count-plot/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe></center><br>
+            <p>We can also see how guitar chords preogress within songs. Below is a plot of what chords follow each other with songs.</p>
+            <center><iframe src="http://www.mattmoocar.me/chord-plot/guitar/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe></center><br>
+            <p>From this plot we can idetify popular chord progrssions including the most popular chord progression in western music history - D-A-Bm-G, which appears in a range of songs from Journey's <i>Don't Stop Believin'</i> to MGMT's <i>Kids</i> to A-Ha's <i>Take on Me</i>.</p>
+        </div>
+        <div class = 'container' id='feats'>
+            <h2>Guitar, Bass, & Drum Tabs</h2>
+            <p>Tablature notation was a little different due to the inconsistent nature of the user submission of tabs, though there was some general standard format with which to compose tablature, each user generally varied their submission with their own unique style. This made it challenging <i class="em em-sweat"></i>. </p>
+            <p>The features for the instruments I used were:</p>
+            <br>
+                <table class="table table-hover" style = "width:100%; font-size:160%; font-align:center;">
+                    <tr style="color:#f2ca27;"><th>Guitar & Bass</th><th>Drums</th></tr>
+                    <tr><td>Normalized count of notes on each fret</td><td>Percent bass drum</td></tr>
+                    <tr><td>Count of notes in quick succession</td><td>Percent cymbal</td></tr>
+                    <tr><td>Number of <i>hammer-ons</i></td><td>Percent high-hat</td></tr>
+                    <tr><td>Number of <i>pull-offs</i></td><td>Percent snare</td></tr>
+                    <tr><td>Number of <i>hammer-ons</i> immediately followed by a <i>pull-off</i></td><td>Percent tom</td></tr>
+                    <tr><td>Number of slides from one note to another</td><td>Percent floor</td></tr>
+                    <tr><td>Number of times the note is sustained</td><td></td></tr>
+                    <tr><td>Mean fret of the song</td><td></td></tr>
+                    <tr><td>Standard deviation of the frets</td><td></td></tr>
+                    <tr><td>Percent of notes played</td><td></td></tr>
+                    <tr><td></td><td></td></tr>
+                </table>
+        </div>
+        <div class = 'container' id='instr'>
+            <p>I trained the model using 10-fold cross-validdated logistic regression with an l2 regularization parameter. I compared l1 and l2 regualarization parameters and l2 out-performed l1, (accuracies will be shown later). I wanted to use logistic regression due to the interpretability of the model. The model accuracies for the various instruments were:</p>
+            <center><table class="table table-hover" style="width:50%; font-size:160%;">
+               <tr style="color:#f2ca27;"><th>Instrument</th><th>Accuracy</th></tr>
+               <tr><td>Guitar Chords</td><td>76.9%</td></tr>
+               <tr><td>Ukulele Chords</td><td>77.7%</td></tr>
+               <tr><td>Bass</td><td>58.9%</td></tr>
+               <tr><td>Guitar Tabs</td><td>52.5%</td></tr>
+               <tr><td>Drums</td><td>45.4%</td></tr>
+            </table></center><br>
+            <p>The ROC curves obtained from the model are shown below for ukulele chords, and guitar chords which performed well:</p>
+            <div class = 'row'>
+                <div class = 'col-sm-6'>
+                    <center><img src="../static/img/ukuleleROC.png" style = "width:100%;border-radius: 25px;" ></center><br><br>
+                </div>
+                <div class = 'col-sm-6'>
+                    <center><img src="../static/img/guitarROC.png" style = "width:100%;border-radius: 25px;" ></center><br><br>
+                </div>
+            </div><br>
+            <p>The low resolution for the advanced curves is due to the lack of <i>advanced</i> classified observations in the training and test set. </p>
+        </div>
+        <div class="container" id = 'otherMod'>
+            <h2>Other Models</h2>
+            <p>The training data was fitted using a variety of other models, and the resulting accuracies of the accuracy on the validation sets and test sets are shown below. The models were fitted on 20,000 guitar tabs <i class="em em-guitar"></i><i class="em em-guitar"></i><i class="em em-guitar"></i></p>
+           
+            <br>
+                <table class="table table-hover" style = "width:100%; font-size:160%; font-align:center;">
+                    <tr style="color:#f2ca27;" align="center" ><th align="center" >Model</th><th align="center">5-fold CV Accuracy</th><th align="center">Test Accuracy</th></tr>
+                    <tr><td>Logistic Regression - L1 penalty</td><td>43.063 &plusmn; 10.614%</td><td>47.618%</td></tr>
+                    <tr style="color:#f2ca27;" ><td>Logistic Regression - L2 penalty</td><td>48.025 &plusmn; 5.789%</td><td>49.512%</td></tr>
+                    <tr><td>Nearest Neighbours</td><td>49.788 &plusmn; 1.449%</td><td>50.800%</td></tr>
+                    <tr><td>Linear SVM</td><td>49.940 &plusmn; 2.034%</td><td>49.266%</td></tr>
+                    <tr><td>RBF SVM</td><td>57.712 &plusmn; 2.420%</td><td>57.052%</td></tr>
+                    <tr><td>Decision Trees</td><td>57.871 &plusmn; 0.806%</td><td>56.733%</td></tr>
+                    <tr><td>Random Forest</td><td>58.573 &plusmn; 1.457%</td><td>58.807%</td></tr>
+                    <tr style="color:#f2ca27;" ><td>Adaboost</td><td> 59.331 &plusmn; 1.326%</td><td>60.179%</td></tr>
+                    <tr><td>Naive Bayes</td><td>50.850 &plusmn; 2.180%</td><td>51.659%</td></tr>
+                    <tr><td>Quadratic Discriminant</td><td>47.618 &plusmn; 9.749%</td><td>50.479%</td></tr>
+                </table>
+        </div>
+        
+        <div class = "container" id = 'ROC'>
+            <p>We can also plot the learning curves and the ROC curves of the model used, logistic regression with l2 penalty, and adaboost.</p>
+            <div class = 'row'>
+                <div class = 'col-sm-6'>
+                    <h2 style = 'text-align:center'>Logistic Regression</h2><br>
+                    <center><img src="../static/img/LogRegLearningCurve.png" style = "width:100%;border-radius: 25px;" ></center><br>
+                </div>
+                <div class = 'col-sm-6'>
+                    <h2 style = 'text-align:center'>AdaBoost</h2><br>
+                    <center><img src="../static/img/AdaBoostLearningCurve.png" style = "width:100%;border-radius: 25px;" ></center><br>
+                </div>
+            </div>
+            <div class = 'row'>
+                <div class = 'col-sm-6'>
+                    <center><img src="../static/img/LR-ROC.png" style = "width:100%;border-radius: 25px;" ></center><br>
+                </div>
+                <div class = 'col-sm-6'>
+                    <center><img src="../static/img/AdaROC.png" style = "width:100%;border-radius: 25px;" ></center><br>
+                </div>
+            </div>
+            <p>We can see that the accuracy levels once the sample size reaches around 13,000. Also the models have a hard time predicting <i>intermediate</i> class music notation. However this can be overcome, by predicting the <i>novice</i> and <i>advanced</i> categories well, and the remaining will be determined<i>intermediate</i>. </p>
+        </div>
+        <div class='container' id='coefs'>
+            <h2>Interpretation of Coefficients</h2>
+            <p>As a sanity check we can look at the coefficients for ukulele chord in the <i>novice</i> classification. The features for the model are all the ukulele chords that appear in more than 100 of the over 140,000 total ukulele songs. I hope to understand what chords make easy songs easy to play, which should have a high positive coefficients. Chords to make the song "not easy" to play will have a high negative coefficient. This is slightly different from making the song hard to play, which would have a high positive coefficient for the <i>advanced</i> category.</p>
+            <p><u>Coefficients for <i>novice</i> classification </u></p>
+            <div class="row">
+                <div class = "col-lg-4" style = "display:inline-block">
+                  <hr style="height:-10px; visibility:hidden;" />
+                  
+                  <img src="../static/img/top5_3.png" style = "width:100%; border-radius: 20px;">
+                </div>
+                <br>
+                <br>
+                <div class = "col-lg-8" style="font-size:100%;display:inline-block; text-align:right; ">
+                  
+                    <div class = 'row'>
+                      <div class = "col-sm-6" style="padding-left: 5%;">
+                        <p><br><i class="fa fa-arrow-right" aria-hidden="true"></i> C predicted easy <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      </div>
+                      <div class = "col-sm-6">
+                         <img src="../static/img/uk_C.jpg" width = "60%" style = "border:5px solid white">
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                  
+                    <div class = "row">
+                      <div class = "col-sm-6">
+                        <p><br><i class="fa fa-arrow-right" aria-hidden="true"></i> Abm7 not predicted easy <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      </div>
+                      <div class = "col-sm-6">
+                        <img src="../static/img/uk_Abm7.jpg" width = "60%"  style = "border:5px solid white;">
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+                
+            <br>
+            <p>We can see that the model performs along the lines of inituition. Chords that appear easy to play, i.e., the C chord, make the song easy to play.</p>
+        </div>
+
+        <div class = 'container' id='conclusion'>
+            <h2>Conclusion</h2>
+            <p>To conclude <a href="http://www.jamify.rocks">Jamify</a> is a song recommender that uses SVD of rank 50 to recommend songs based on song-song similarity of songs by bands inputted by the user. This algorithm is used as a trade-off bewteen speed and performance in the recommendation engine. From the algorithms explored if I had the time to input into he database I would use implicit factorization as it performed the best in the test set, with the largest MAP@100 score.</p>
+            <p>Logistic regression is used to calculate the difficulty of the unlabelled music notation, and was used because of its interpretability. For those interested in understanding how this model can be applied to other songs, they can easily see which chords or techniques make songs easy or difficult to play. If I were just concerned with accuracy I would use the Adaboost classifier due to its high performance of all classifiers used. However it should be noted that the difficulty levels of those labelled may not be ground truth because it is just a single users determination of the song difficulty level. Due to this, aiming for perfect fit may not be the best use of time.</p>
+            <p>Overall this project was extremely fun to implement, if you have any questions or comments you can forward through my available streams below. And don't forget to ROCK ON <i class="em em-metal"></i><i class="em em-metal"></i><i class="em em-metal"></i></p>
+        </div>
+        <br><br><br><br>
+    </div>
+    </div>
+    </div>
+    </header>
+
+
+<!--
+    <section id="features" class="features" style="background: white;">
+    <div class = "container">
+
+      <form  action="/output" method="GET">
+        <div class="form-group">
+          <label for="artist_name">Band:</label>
+          <input type="text" id="artist_name" name='artist_name' placeholder="e.g. Metallica" list ="bands">
+          <input type="radio" name="instrument" value="Drums" id = 'drums'>
+                            <label for="drums"><img src="../static/img/drum2.png  " alt="I'm sad" style="width:38px;"/></label>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-default btn-lg">Find Songs</button>
+        </div>
+
+      </form>
+    </div>
+     -->
+    
+
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+
+     
+     
+    <!--
+    <section id="recommend" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
+                    <p>Our app is available on any mobile device! Download now to get started!</p>
+                    <div class="badges">
+                        <a class="badge-link" href="#"><img src="../static/img/google-play-badge.svg" alt=""></a>
+                        <a class="badge-link" href="#"><img src="../static/img/app-store-badge.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+    <!--
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Learn, Play, Create</h2>
+                        <p class="text-muted">Check out how you can learn to improve your skills </p>
+                        <hr>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class="img2" style="background-image:url('../static/img/img1.jpeg'); border:4px solid black; padding: 20px;"></div>
+                    <div class="img2" style="background-image:url('../static/img/img3.jpg'); border:4px solid black;padding: 20px;"></div>
+                    <div class="img2" style="background-image:url('../static/img/img2.jpeg'); border:4px solid black;padding: 20px;"></div>
+                </div>
+            </div>
+             
+            <div class="row">
+                <div class="col-md-4">
+
+                   
+                    <div class="device-container">
+                        <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen">
+                                    
+                                    <img src="../static/img/demo-screen-1.jpg" class="img-responsive" alt=""> </div>
+                                <div class="button">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                    <!--
+                </div>
+                <div class="col-md-8">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-screen-smartphone text-primary"></i>
+                                    <h3>Device Mockups</h3>
+                                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-camera text-primary"></i>
+                                    <h3>Flexible Use</h3>
+                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-present text-primary"></i>
+                                    <h3>Free to Use</h3>
+                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-lock-open text-primary"></i>
+                                    <h3>Open Source</h3>
+                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-content">
+            <div class="container">
+                <h2>Stop waiting.<br>Start building.</h2>
+                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    
+    </section>
+    
+    <section id="contact" class="contact bg-primary">
+        <div class="container">
+            <h2>Contact Me</h2>
+            
+        </div>
+    </section>
+    -->
+    <!--<footer>
+        <div class="container" style="border: white 5px">
+            </div>
+    </footer>-->
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#motivation');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a1").css('color', '#f2ca27');
+          $(".a2").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#data');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a2").css('color', '#f2ca27');
+          $(".a1").css('color', '#696969');
+          $(".a3").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#approach');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a3").css('color', '#f2ca27');
+          $(".a2").css('color', '#696969');
+          $(".a4").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#RecEngine');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a4").css('color', '#f2ca27');
+          $(".a3").css('color', '#696969');
+          $(".a5").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#SVD');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a5").css('color', '#f2ca27');
+          $(".a4").css('color', '#696969');
+          $(".a6").css('color', '#696969');
+       }
+   });
+    }
+});$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#implicit');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a6").css('color', '#f2ca27');
+          $(".a5").css('color', '#696969');
+          $(".a7").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#mostGeneral');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a7").css('color', '#f2ca27');
+          $(".a6").css('color', '#696969');
+          $(".a8").css('color', '#696969');
+       }
+   });
+    }
+});
+
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#compar');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a8").css('color', '#f2ca27');
+          $(".a7").css('color', '#696969');
+          $(".a9").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#SongDiff');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a9").css('color', '#f2ca27');
+          $(".a8").css('color', '#696969');
+          $(".a10").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#feats');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a10").css('color', '#f2ca27');
+          $(".a9").css('color', '#696969');
+          $(".a11").css('color', '#696969');
+       }
+   });
+    }
+});
+
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#instr');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a11").css('color', '#f2ca27');
+          $(".a10").css('color', '#696969');
+          $(".a12").css('color', '#696969');
+       }
+   });
+    }
+});$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#otherMod');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a12").css('color', '#f2ca27');
+          $(".a11").css('color', '#696969');
+          $(".a13").css('color', '#696969');
+       }
+   });
+    }
+});
+
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#ROC');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a13").css('color', '#f2ca27');
+          $(".a12").css('color', '#696969');
+          $(".a14").css('color', '#696969');
+       }
+   });
+    }
+});
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#coefs');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a14").css('color', '#f2ca27');
+          $(".a13").css('color', '#696969');
+          $(".a15").css('color', '#696969');
+       }
+   });
+    }
+});
+
+$(document).ready(function(){       
+   var scroll_start = 0;
+   var startchange = $('#conclusion');
+   var offset = startchange.offset();
+    if (startchange.length){
+   $(document).scroll(function() { 
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $(".a15").css('color', '#f2ca27');
+          $(".a14").css('color', '#696969');
+          
+       }
+   });
+    }
+});
+</script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="../static/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../static/js/new-age.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jamify - Learn to Play your New Favorite Songs</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/js/bootstrap-select.min.js"></script>
+    
+<!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|New+Rocker|Open+Sans|Metal+Mania|Exo" rel="stylesheet"> 
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../static/device-mockups/device-mockups.min.css">
+
+    <!-- Theme CSS -->
+    <link href="../static/css/new-age.css" rel="stylesheet">
+
+    <link rel="favicon-144-precomposed"  href="../static/img/guitar.svg">
+    <link rel="shortcut icon" href="../static/img/guitar.svg">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        h1 {
+          font-family: 'Metal Mania', cursive;
+          color: #f2ca27;
+        }
+
+    </style>
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" style = "font-family: 'Metal Mania', cursive; color: #f2ca27; font-size:200%" href="/">Jamify</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="https://www.mattmoocar.me">Matthew Moocarme</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="model-details">Model Details</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-content" style = "text-align: center;">
+                            <br>
+                            <br>
+                            <br>
+                            <h1><big>Jamify</big></h1> 
+                            <h2>Learn to play your new favourite songs</h2>
+                            <!--<a href="#recommend" class="btn btn-outline btn-xl page-scroll">Start Now for Free!</a>-->
+                    <div class="device-container" style = "text-align: center;">
+                        <h2>Choose your band, weapon, and skill level </h2>
+			<select type="submit" name="recipe_choice" id="recipe_choice" class="selectpicker" title="Choose your recipe" data-live-search="true" data-dropup-auto="false" data-width="600px", data-height="100px" style="color:red; font-weight:bold">
+                               <div class="recipe-titles">
+                               
+                               {% for artist in uni %}
+                                   <option>{{title}}</option>
+                               {% endfor %}
+                               </div>
+                        <form action="/output" method="GET">
+                        <div class = 'row'>
+                            <fieldset id = 'bandmate1'>
+                                <label for="artist_name">Band:</label>
+                                <input type="text" id="artist_name" name='artist_name' placeholder="e.g. Metallica" style="color: black;" list ="bands">
+                                <input type="radio" value="guitar" id = 'guit' name = 'bandmate1' checked>
+                                <label for="guit" class = 'rad'><img src="../static/img/guitar.png" alt="I'm sad" style="width:38px;"/></label>
+                                <input type="radio" value="Bass Tabs" id = "bass" name = 'bandmate1'>
+                                <label for="bass" class = 'rad'><img src="../static/img/bass.png  " alt="I'm sad" style="width:38px;"/></label>
+                                <input type="radio"  value="Drum Tabs" id = 'drums' name = 'bandmate1'>
+                                <label for="drums" class = 'rad'><img src="../static/img/drum2.png  " alt="I'm sad" style="width:38px;"/></label>
+                                <input type="radio" value="novice" id = 't1' name = 'skill-bandmate1' checked>Nov
+                                <input type="radio" value="intermediate" id = "t1" name = 'skill-bandmate1'>Int
+                                <input type="radio"  value="advanced" id = 't1' name = 'skill-bandmate1'>Adv
+                                <input type="button" id = 'bandmate2-btn-id' name="bandmate2-btn" value = "+" style = "color:black;">
+                            </fieldset>
+                        </div>
+                        <br>
+                        <div class = 'row'>
+                            <fieldset id = 'bandmate2' class = 'bandmate2'>
+                            <label for="artist_name">Band:</label>
+                            <input type="text" id="artist_name" name='artist_name' placeholder="e.g. Slayer" style="color: black;" list ="bands">
+                            <input type="radio" value="Guitar2" id = 'guit2'  name = 'bandmate2'>
+                            <label for="guit2"><img src="../static/img/guitar.png" alt="I'm sad" style="width:38px;"/></label>
+                            <input type="radio"  value="Bass2" id = "bass2"  name = 'bandmate2'>
+                            <label for="bass2"><img src="../static/img/bass.png  " alt="I'm sad" style="width:38px;"/></label>
+                            <input type="radio" value="Drums2" id = 'drums2' name = 'bandmate2'>
+                            <label for="drums2"><img src="../static/img/drum2.png" alt="I'm sad" style="width:38px;"/></label>
+                                <input type="radio" value="novice" id = 't1' name = 'skill-bandmate2' >Nov
+                                <input type="radio" value="intermediate" id = "t1" name = 'skill-bandmate2'>Int
+                                <input type="radio"  value="advanced" id = 't1' name = 'skill-bandmate2'>Adv
+                                <input type="button" id = 'bandmate3-btn-id' name="bandmate3-btn" value = "+"style = "color:black;">
+                        </fieldset>
+                        </div>
+                        <br>
+                        <div class = 'row'>
+                            <fieldset id = 'bandmate3' class = 'bandmate3'>
+                            <label for="artist_name">Band:</label>
+                            <input type="text" id="artist_name" name='artist_name' placeholder="e.g. Janis Joplin" style="color: black;" list ="bands">
+                            <input type="radio" value="Guitar3" id = 'guit3' name = 'bandmate3'>
+                            <label for="guit3" class = 'rad' ><img src="../static/img/guitar.png" alt="I'm sad" style="width:38px;"></label>
+                            <input type="radio" value="Bass3" id = "bass3" name = 'bandmate3'>
+                            <label for="bass3" class = 'rad' ><img src="../static/img/bass.png" alt="I'm sad" style="width:38px;"/></label>
+                            <input type="radio" value="Drums3" id = 'drums3' name = 'bandmate3' >
+                            <label for="drums3" class = 'rad' ><img src="../static/img/drum2.png"alt="I'm sad" style="width:38px;"/></label>
+                                <input type="radio" value="novice" id = 't1' name = 'skill-bandmate3' >Nov
+                                <input type="radio" value="intermediate" id = "t1" name = 'skill-bandmate3'>Int
+                                <input type="radio"  value="advanced" id = 't1' name = 'skill-bandmate3'>Adv
+                            </fieldset>
+                        </div>
+                        <br>
+                        <br>
+                        <div style = "text-align: center;">
+                          <button type="submit" class="btn btn-default btn-lg">Find Songs</button>
+                        </div>
+                        
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+    {% if section %}
+    <script>
+        document.getElementById('{{ section }}').scrollIntoView();
+        // or
+        document.location.hash = '#' + '{{ section }}';
+    </script>
+    {% endif %}
+    
+
+<!--
+    <section id="features" class="features" style="background: white;">
+    <div class = "container">
+
+      <form  action="/output" method="GET">
+        <div class="form-group">
+          <label for="artist_name">Band:</label>
+          <input type="text" id="artist_name" name='artist_name' placeholder="e.g. Metallica" list ="bands">
+          <input type="radio" name="instrument" value="Drums" id = 'drums'>
+                            <label for="drums"><img src="../static/img/drum2.png  " alt="I'm sad" style="width:38px;"/></label>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-default btn-lg">Find Songs</button>
+        </div>
+
+      </form>
+    </div>
+     -->
+    
+
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(function () {
+        $('fieldset.bandmate2').hide();
+        $('input[name="bandmate2-btn"]').click(function () {
+            $('fieldset.bandmate2').show();
+            $('#bandmate2-btn-id').hide();
+            });
+        });
+        $(function () {
+        $('fieldset.bandmate3').hide();
+        $('input[name="bandmate3-btn"]').click(function () {
+            $('fieldset.bandmate3').show();
+            $('#bandmate3-btn-id').hide();
+            });
+        });
+    </script>
+
+</div>
+     
+      <datalist id="bands">
+        <option value="Metallica">
+        <option value="Slayer">
+        <option value="Hoobastank">
+        <option value="Mudhoney">
+        <option value="Pixies">
+        <option value="Devo">
+        <option value="Fucked Up">
+        <option value="Bad Brains">
+        <option value="Turbonegro">
+        <option value="Billy Idol">
+        <option value="Janis Joplin">
+        <option value="Living Colour">
+      </datalist>
+    <!--
+    <section id="recommend" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
+                    <p>Our app is available on any mobile device! Download now to get started!</p>
+                    <div class="badges">
+                        <a class="badge-link" href="#"><img src="../static/img/google-play-badge.svg" alt=""></a>
+                        <a class="badge-link" href="#"><img src="../static/img/app-store-badge.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+    <!--
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Learn, Play, Create</h2>
+                        <p class="text-muted">Check out how you can learn to improve your skills </p>
+                        <hr>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class="img2" style="background-image:url('../static/img/img1.jpeg'); border:4px solid black; padding: 20px;"></div>
+                    <div class="img2" style="background-image:url('../static/img/img3.jpg'); border:4px solid black;padding: 20px;"></div>
+                    <div class="img2" style="background-image:url('../static/img/img2.jpeg'); border:4px solid black;padding: 20px;"></div>
+                </div>
+            </div>
+             
+            <div class="row">
+                <div class="col-md-4">
+
+                   
+                    <div class="device-container">
+                        <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen">
+                                    
+                                    <img src="../static/img/demo-screen-1.jpg" class="img-responsive" alt=""> </div>
+                                <div class="button">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                    <!--
+                </div>
+                <div class="col-md-8">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-screen-smartphone text-primary"></i>
+                                    <h3>Device Mockups</h3>
+                                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-camera text-primary"></i>
+                                    <h3>Flexible Use</h3>
+                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-present text-primary"></i>
+                                    <h3>Free to Use</h3>
+                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-lock-open text-primary"></i>
+                                    <h3>Open Source</h3>
+                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-content">
+            <div class="container">
+                <h2>Stop waiting.<br>Start building.</h2>
+                <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    
+    </section>
+    
+    <section id="contact" class="contact bg-primary">
+        <div class="container">
+            <h2>Contact Me</h2>
+            
+        </div>
+    </section>
+    -->
+    <footer>
+        <div class="container">
+            <ul class="list-inline list-social">
+                <li class="social-github">
+                    <a href="https://github.com/moocarme"><i class="fa fa-github-alt"></i></a>
+                </li>
+                <li class="social-linkedin">
+                    <a href="https://linkedin.com/in/matthew-moocarme"><i class="fa fa-linkedin"></i></a>
+                </li>
+                <li class="social-mail">
+                    <a href="mailto:moocarme@gmail.com"><i class="fa fa-envelope-o"></i></a>
+                </li>
+                <li class="social-web">
+                    <a href="https://mattmoocar.me"><i class="fa fa-diamond"></i></a>
+                </li>
+            </ul>
+            <!--<p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
+            <ul class="list-inline">
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>-->
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="../static/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../static/js/new-age.min.js"></script>
+
+</body>
+
+</html>
